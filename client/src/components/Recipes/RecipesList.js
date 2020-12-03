@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 
 import AddRecipeForm from '../Forms/AddRecipeForm';
@@ -25,10 +25,10 @@ const RecipesList = () => {
                 {listOfRecipes.map((recipe) => {
                 return (
                     <div key={recipe._id} className="recipe-list">
-                        {/* <p>{recipe.image}</p> */}
-                        {/* <Link to={`/recipes/${recipe._id}`}>
+                        <p>{recipe.image}</p>
+                        <Link to={`/recipes/${recipe._id}`}>
                             <h3>{recipe.title}</h3>
-                        </Link> */}
+                        </Link>
                         <p>{recipe.duration} </p>
                         <p>{recipe.ingredients} </p>
                         <p>{recipe.description} </p>

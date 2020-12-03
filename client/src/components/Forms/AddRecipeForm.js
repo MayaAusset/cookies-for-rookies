@@ -10,7 +10,7 @@ const initialState = {
     description: '',
 }
 
-const AddRecipeForm = () => {
+const AddRecipeForm = (props) => {
     const [formState, setFormState] = useState(initialState);
 
     const handleInputChange = (event) => {
@@ -26,7 +26,7 @@ const AddRecipeForm = () => {
         axios
             .post("http://localhost:5000/api/recipe", { image, title, duration, ingredients, description })
             .then(() => {
-                //props.getData();
+                props.getData();
                 setFormState(initialState);
             })
             .catch((error) => console.error(error));
