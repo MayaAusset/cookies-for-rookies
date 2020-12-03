@@ -7,11 +7,11 @@ const recipeSchema = new Schema(
     duration: String,
     ingredients: [{ type: String }],
     description: String, 
-    fromUser : [{ type: Schema.Types.ObjectId, ref: 'User' }]
+    fromUser : { type: Schema.Types.ObjectId, ref: 'User' },
     },
     {
     timestamps: true,
     }
 );
 
-modulet.exports = model("Recipe", recipeSchema);
+module.exports = model("Recipe", recipeSchema);
