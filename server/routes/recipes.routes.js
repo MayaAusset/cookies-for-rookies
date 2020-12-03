@@ -31,7 +31,7 @@ router.post("/recipe", (req, res) => {
 //! DISPLAY ALL RECIPES
 router.get("/recipes", (req, res) => {
     Recipe.find()
-      .populate("recipes")
+      .populate("Recipe")
       .then((allTheRecipes) => {
         res.status(200).json(allTheRecipes);
       })
@@ -55,7 +55,7 @@ router.get("/recipes", (req, res) => {
     // Our projects have array of tasks' ids and
     // we can use .populate() method to get the whole task objects
     Recipe.findById(id)
-      .populate("recipes")
+      .populate("Recipe")
       .then((recipe) => {
         res.status(200).json(recipe);
       })
@@ -64,5 +64,46 @@ router.get("/recipes", (req, res) => {
       });
   });
   
+// ! UPDATE A SPECIFIC RECIPE
+router.put("/recipes/:id", (req, res) => {
+    const { id } = req.params;
+  
+    // Check if the incoming id is a valid ObjectId type
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      res.status(400).json({ message: "Specified id is not valid" });
+      return;
+    }
+  
+    Recipe.findByIdAndUpdate(id, req.body)
+      .then(() => {
+        res.status(200).json({
+          message: `Recipe with the id ${id} is updated successfully.`,
+        });
+      })
+      .catch((error) => {
+        res.status(500).json(error);
+      });
+  });
+
+  //! DELETE A SPECIFIC RECIPE
+router.delete("/recipes/:id", (req, res) => {
+    const { id } = req.params;
+  
+    // Check if the incoming id is a valid ObjectId type
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      res.status(400).json({ message: "Specified id is not valid" });
+      return;
+    }
+  
+    Recipe.findByIdAndRemove(id)
+      .then(() => {
+        res.status(200).json({
+          message: `Recipe with the id ${id} is removed successfully.`,
+        });
+      })
+      .catch((error) => {
+        res.status(500).json(error);
+      });
+  });
 
   module.exports = router;

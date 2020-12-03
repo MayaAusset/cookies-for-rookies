@@ -4,9 +4,11 @@ const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express      = require('express');
 const favicon      = require('serve-favicon');
-const mongoose     = require('mongoose');
+const cors = require("cors");
 const logger       = require('morgan');
 const path         = require('path');
+const passport = require("passport");
+const session = require("express-session");
 
 
 require("./configs/db.configs")
