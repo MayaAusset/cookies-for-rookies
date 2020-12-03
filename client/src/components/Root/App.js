@@ -1,12 +1,13 @@
 import './App.css';
 
-import AddRecipeForm from '../Forms/AddRecipeForm';
+import RecipesList from '../Recipes/RecipesList';
 
 function App() {
   return (
     <div className="App">
      <h1 className="title">COOKIES FOR ROOKIES</h1>
-     <AddRecipeForm/>
+     <h1>Recipes: </h1>
+     <RecipesList />
     </div>
   );
 }

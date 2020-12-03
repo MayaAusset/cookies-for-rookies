@@ -31,7 +31,7 @@ router.post("/recipe", (req, res) => {
 //! DISPLAY ALL RECIPES
 router.get("/recipes", (req, res) => {
     Recipe.find()
-      .populate("Recipe")
+      .populate("recipes")
       .then((allTheRecipes) => {
         res.status(200).json(allTheRecipes);
       })
