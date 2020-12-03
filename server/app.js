@@ -24,6 +24,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+//Cors Middleware
+app.use(
+  cors({
+    origin: ["https://localhost:3000"],
+    credentials: true,
+  })
+);
+
 // Express View engine setup
 
 app.use(require('node-sass-middleware')({

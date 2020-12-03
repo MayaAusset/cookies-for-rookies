@@ -15,7 +15,7 @@ router.post("/recipe", (req, res) => {
       image,
       title,
       duration,
-      ingredients: [],
+      ingredients,
       description,
       //fromUser: req.user._id, // Add this after finishing authentication
     })

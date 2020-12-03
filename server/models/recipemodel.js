@@ -5,7 +5,7 @@ const recipeSchema = new Schema(
     image: String,
     title: String,
     duration: String,
-    ingredients: [{ type: String }],
+    ingredients: String,
     description: String, 
     fromUser : { type: Schema.Types.ObjectId, ref: 'User' },
     },
