@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
-import '../Recipes/Recipes.css'
+import { Link } from 'react-router-dom';
+import '../Recipes/Recipes.css';
+import EditRecipeForm from '../Forms/EditRecipeForm';
 
 const RecipeDetail = (props) => {
     const [details, setDetails] = useState({});
@@ -20,6 +21,20 @@ const RecipeDetail = (props) => {
 
     useEffect(getSingleRecipe, [props.match.params]);
 
+    const renderEditForm = () => {
+        if (!details.title) {
+            getSingleRecipe();
+        }else{
+            return (
+                <EditRecipeForm
+                recipe={details}
+                getTheRecipe={getSingleRecipe}
+                {...props}
+                />
+            );
+        }
+    };
+
     return (
         <div className="container">
             <h1>Recipe Detail</h1>
@@ -29,7 +44,10 @@ const RecipeDetail = (props) => {
                 <p>{details.ingredients} </p>
                 <p>{details.description} </p>
                 <p>{details.fromUser} </p>
-            <Link to={"recipes"}>
+                <div>
+                    {renderEditForm()}
+                </div>
+            <Link to={"/recipes"}>
             <button className="btn-grad">Back to the recipes</button>
             </Link>
         </div>
