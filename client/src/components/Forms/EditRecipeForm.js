@@ -63,6 +63,8 @@ const EditRecipeForm = (props) => {
                 />
                 <label htmlFor="description">Description:</label>
                 <textarea
+                rows="10"
+                cols="40"
                 name="description"
                 value={formState.description}
                 onChange={handleInputChange}
