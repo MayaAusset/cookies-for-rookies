@@ -17,7 +17,7 @@ router.post("/recipe", (req, res) => {
       duration,
       ingredients,
       description,
-      //fromUser: req.user._id, // Add this after finishing authentication
+      fromUser: req.user._id, // Add this after finishing authentication
     })
       .then((response) => {
         res.status(200).json(response);

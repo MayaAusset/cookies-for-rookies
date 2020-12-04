@@ -9,7 +9,9 @@ const RecipesList = () => {
 
     const getAllRecipes = () => {
         axios
-            .get('http://localhost:5000/api/recipes' )
+            .get('http://localhost:5000/api/recipes', {
+                withCredentials: true,
+            })
             .then((responseFromApi) => {
                 console.log(responseFromApi.data);
                 setListOfRecipes(responseFromApi.data);

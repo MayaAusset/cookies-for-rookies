@@ -24,7 +24,16 @@ const AddRecipeForm = (props) => {
         const {  image, title, duration, ingredients, description } = formState;
 
         axios
-            .post("http://localhost:5000/api/recipe", { image, title, duration, ingredients, description })
+            .post("http://localhost:5000/api/recipe", { 
+                image,
+                title, 
+                duration, 
+                ingredients, 
+                description ,
+            },
+            {
+                withCredentials: true,
+            })
             .then(() => {
                 props.getData();
                 setFormState(initialState);

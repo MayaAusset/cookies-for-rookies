@@ -27,6 +27,9 @@ const EditRecipeForm = (props) => {
                 duration, 
                 ingredients,
                 description,
+            }, 
+            {
+                withCredentials: true,
             })
             .then(() => {
                 props.getTheRecipe();

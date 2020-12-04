@@ -11,7 +11,9 @@ const RecipeDetail = (props) => {
         const { id } = props.match.params;
 
         axios   
-            .get(`http://localhost:5000/api/recipes/${id}`)
+            .get(`http://localhost:5000/api/recipes/${id}`, {
+                withCredentials: true,
+            })
             .then((responseFromApi) => {
                 console.log(responseFromApi);
                 setDetails(responseFromApi.data);
@@ -39,12 +41,27 @@ const RecipeDetail = (props) => {
         const { id } = props.match.params;
 
         axios
-            .delete(`http://localhost:5000/api/recipes/${id}`)
+            .delete(`http://localhost:5000/api/recipes/${id}`, {
+                withCredentials: true,
+            })
             .then((results) => {
                 props.history.push('/recipes')
             })
             .catch((error) => console.error(error))
     };
+
+    const ownershipCheck = (recipe) => {
+        if (props.loggedInUser && recipe.fromUser === props.loggedInUser._id) {
+          return (
+            <div>
+              <div>{renderEditForm()} </div>
+              <button onClick={() => deleteRecipe(details._id)}>
+                Delete this recipe
+              </button>
+            </div>
+          );
+        }
+      };
 
     return (
         <div className="container">
@@ -55,12 +72,8 @@ const RecipeDetail = (props) => {
                 <p>{details.ingredients} </p>
                 <p>{details.description} </p>
                 <p>{details.fromUser} </p>
-                <div>
-                    {renderEditForm()}
-                </div>
-                <button onClick={() => deleteRecipe()}>
-                Delete Recipe
-                </button>
+                {ownershipCheck(details)}
+                <br/>
                 <hr/>
             <Link to={"/recipes"}>
             <button className="btn-grad">Back to the recipes</button>

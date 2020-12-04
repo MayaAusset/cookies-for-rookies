@@ -25,6 +25,7 @@ const Signup = (props) => {
             setRegForm(initialState);
             console.log("SIGNUP RESPPONSE",response)
             props.getUser(response);
+            //props.history.push('/recipes')
         })
         .catch((error) => {
             console.log(error.response)
