@@ -11,7 +11,9 @@ const passport = require("passport");
 const session = require("express-session");
 
 
-require("./configs/db.configs")
+require("./configs/db.configs");
+
+require('./configs/passport.configs');
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
@@ -31,6 +33,17 @@ app.use(
     credentials: true,
   })
 );
+
+app.use(
+  session({
+    secret: process.env.SESS_SECRET,
+    resave: true,
+    saveUninitialized: true,
+  })
+)
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Express View engine setup
 
@@ -54,6 +67,7 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 app.use('/api', require("./routes/index"));
 app.use("/api", require('./routes/recipes.routes'));
+app.use('/api', require('./routes/auth.routes'));
 
 
 module.exports = app;

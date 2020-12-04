@@ -35,6 +35,17 @@ const RecipeDetail = (props) => {
         }
     };
 
+    const deleteRecipe = () => {
+        const { id } = props.match.params;
+
+        axios
+            .delete(`http://localhost:5000/api/recipes/${id}`)
+            .then((results) => {
+                props.history.push('/recipes')
+            })
+            .catch((error) => console.error(error))
+    };
+
     return (
         <div className="container">
             <h1>Recipe Detail</h1>
@@ -47,6 +58,10 @@ const RecipeDetail = (props) => {
                 <div>
                     {renderEditForm()}
                 </div>
+                <button onClick={() => deleteRecipe()}>
+                Delete Recipe
+                </button>
+                <hr/>
             <Link to={"/recipes"}>
             <button className="btn-grad">Back to the recipes</button>
             </Link>
