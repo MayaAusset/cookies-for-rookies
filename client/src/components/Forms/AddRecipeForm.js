@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './AddRecipeForm.css';
+import UploadService from '../../services/upload.service';
 
 const initialState = {
     image: '',
@@ -13,9 +14,29 @@ const initialState = {
 const AddRecipeForm = (props) => {
     const [formState, setFormState] = useState(initialState);
 
+    const service = new UploadService();
+
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setFormState({ ...formState, [name]: value });
+    };
+
+    const handleFileUpload = (event) => {
+        console.log("the file to be uploaded is : ", event.target.files[0]);
+        const uploadData = new FormData();
+        uploadData.append('image', event.target.files[0]);
+
+        // upload the data to cloudinary
+        service
+            .upload(uploadData)
+            .then((response) => {
+                console.log('response is: ', response);
+                // The response from uploading to cloudinary is the url which will be saved in the database.
+                setFormState({ ...formState, image: response.cloudinaryUrl });
+            })
+            .catch((err) => {
+                console.log("Error while uploading the file: ", err);
+            });
     };
 
     const handleFormSubmit = (event) => {
@@ -46,10 +67,9 @@ const AddRecipeForm = (props) => {
             <form onSubmit={handleFormSubmit} className="container">
                 <label htmlFor="image">Image</label>
                 <input
-                    type="text"
+                    type="file"
                     name="image"
-                    value={formState.image}
-                    onChange={handleInputChange}
+                    onChange={handleFileUpload}
                 />
                 <label htmlFor="title">Title</label>
                 <input
@@ -80,7 +100,14 @@ const AddRecipeForm = (props) => {
                     onChange={handleInputChange}
                 />
 
-                <button className="btn-grad" type="submit">Submit</button>
+
+                {formState.image ? (
+                <button className="btn-grad" type="submit">Add new Recipe</button>
+                ) : (
+                <button className="btn-grad" disabled type="submit">
+                To Add a new Recipe, choose an Image
+                </button>
+                )}
 
             </form>
         </div>
