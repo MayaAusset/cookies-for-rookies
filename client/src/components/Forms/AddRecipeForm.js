@@ -63,7 +63,7 @@ const AddRecipeForm = (props) => {
     };
 
     return (
-        <div  className="App">
+        <div  className="App add-recipe">
             <form onSubmit={handleFormSubmit} className="container">
                 <label htmlFor="image">Image</label>
                 <input
@@ -93,9 +93,11 @@ const AddRecipeForm = (props) => {
                     onChange={handleInputChange}
                 />
                 <label htmlFor="description">Description</label>
-                <input
-                    type="text"
+                <textarea
+                    rows="10"
+                    cols="30"
                     name="description"
+                    placeholder=" Step 1 :   ..."
                     value={formState.description}
                     onChange={handleInputChange}
                 />

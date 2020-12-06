@@ -65,13 +65,15 @@ const RecipeDetail = (props) => {
 
     return (
         <div className="container">
-            <h1>Recipe Detail</h1>
-                <p>{details.image}</p>
+            <div className="rec-detail-div">
+                <img src={details.image} alt="recipe" width="400px"/>
                 <h3>{details.title}</h3>
                 <p>{details.duration} </p>
                 <p>{details.ingredients} </p>
                 <p>{details.description} </p>
-                <p>{details.fromUser} </p>
+            </div>
+            
+                
                 {ownershipCheck(details)}
                 <br/>
                 <hr/>

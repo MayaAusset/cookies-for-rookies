@@ -13,6 +13,20 @@
     padding: 10px;
     margin: 10px;
 } */
+.rec-detail-div{
+  margin:50px;
+}
+.recipe-list{
+  display: flex;
+  justify-content: center;
+}
+.recipe-card{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  width:300px;
+  border: 1px solid black;
+}
 .btn-grad {background-image: linear-gradient(to right, #DE6262 0%, #FFB88C  51%, #DE6262  100%)}
 .btn-grad {
    margin: 15px;

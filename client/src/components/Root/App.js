@@ -35,8 +35,13 @@ function App() {
   fetchUser();
 
   return loggedInUser ? (
+      
       <section className="App">
-        <Navbar userInSession={loggedInUser} getUser={getLoggedInUser} />
+      <div className="main-background">
+      <img className="nav-img" src="/Background-img.jpg" alt="background" width="100%" />
+      <h1 className="big-title centered">COOKIES FOR ROOKIES</h1>
+      </div>
+      <Navbar userInSession={loggedInUser} getUser={getLoggedInUser} />
         <Switch>
           <ProtectedRoute
             user={loggedInUser}
@@ -51,7 +56,11 @@ function App() {
         </Switch>
       </section>
     ) : (
-      <section className="App">
+      <section className="App container-fluid">
+      <div className="main-background">
+      <img className="nav-img" src="/Background-img.jpg" alt="background" width="100%" />
+      <h1 className="centered">COOKIES FOR ROOKIES</h1>
+      </div>
         <Navbar userInSession={loggedInUser} getUser={getLoggedInUser} />
 
         <Switch>

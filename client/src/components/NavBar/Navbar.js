@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import '../Root/App.css';
+import RecipesList from "../Recipes/RecipesList";
 
 import AuthService from '../../services/auth.service';
 
@@ -29,9 +31,10 @@ const Navbar = (props) => {
     if (loggedInUser) {
     return (
         <nav className="nav-style-loggedin">
-            <span>Welcome, {loggedInUser.username}</span>
+            <h2><span>Welcome, {loggedInUser.username}</span></h2>
             <ul>
             <li>
+      
                 <Link to="/recipes" style={{ textDecoration: "none" }}>
                 Check out the Recipes !
                 </Link>

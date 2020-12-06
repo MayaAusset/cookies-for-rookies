@@ -13,6 +13,10 @@
     padding: 10px;
     margin: 10px;
 }
+.add-recipe{
+  border: 1px solid black;
+  margin: 25px;
+}
 .btn-grad {background-image: linear-gradient(to right, #DE6262 0%, #FFB88C  51%, #DE6262  100%)}
 .btn-grad {
    margin: 15px;

@@ -25,11 +25,25 @@ ul{
 li{
   list-style-type: none;
 }
+.nav-img{
+  filter: grayscale(40%);
+}
 .nav-title{
   font-size: 2.5rem;
 }
 .title{
   font-size: 50px;
+}
+.main-background {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .App-logo {
