@@ -36,7 +36,7 @@ const Navbar = (props) => {
     if (loggedInUser) {
     return (
         <nav className="nav-style-loggedin container-fluid">
-            <h2 className="titleh2"><span>Welcome to Cookies for Rookies, {loggedInUser.username}</span></h2>
+            <h2 className="titleh2"><span>Welcome, {loggedInUser.username}</span></h2>
            
             <div className="redirection-container  align-items-center"> 
 
