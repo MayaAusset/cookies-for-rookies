@@ -4,6 +4,7 @@ import './AddRecipeForm.css';
 import UploadService from '../../services/upload.service';
 
 const initialState = {
+    rating: 0,
     image: '',
     title: '',
     duration: '',
@@ -42,10 +43,11 @@ const AddRecipeForm = (props) => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
-        const {  image, title, duration, ingredients, description } = formState;
+        const {  rating, image, title, duration, ingredients, description } = formState;
 
         axios
             .post("http://localhost:5000/api/recipe", { 
+                rating,
                 image,
                 title, 
                 duration, 
@@ -66,6 +68,12 @@ const AddRecipeForm = (props) => {
         <div  className="add-recipe align-items-center">
         <h1 className="text-justify-center form-title">Add a recipe !</h1>
             <form onSubmit={handleFormSubmit} className="container">
+                <label htmlFor="rating">Rating</label>
+                <input
+                    type="number"
+                    name="rating"
+                    onChange={handleInputChange}
+                />
                 <label htmlFor="image">Image</label>
                 <input
                     type="file"
@@ -87,9 +95,11 @@ const AddRecipeForm = (props) => {
                     onChange={handleInputChange}
                 />
                 <label htmlFor="ingredients">Ingredients</label>
-                <input
-                    type="text"
+                <textarea
+                    rows="5"
+                    cols="30"
                     name="ingredients"
+                    placeholder=" 110g Butter, 220g Brown Sugar... "
                     value={formState.ingredients}
                     onChange={handleInputChange}
                 />

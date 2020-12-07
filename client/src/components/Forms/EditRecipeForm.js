@@ -4,6 +4,7 @@ import '../Forms/EditRecipeForm.css';
 
 const EditRecipeForm = (props) => {
     const [formState, setFormState] = useState({
+        rating: props.recipe.rating,
         title: props.recipe.title,
         duration: props.recipe.duration,
         ingredients: props.recipe.ingredients,
@@ -19,10 +20,11 @@ const EditRecipeForm = (props) => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
-        const { title, duration, ingredients, description } = formState;
+        const { rating, title, duration, ingredients, description } = formState;
 
         axios
             .put(`http://localhost:5000/api/recipes/${props.recipe._id}`, {
+                rating,
                 title, 
                 duration, 
                 ingredients,
@@ -41,8 +43,15 @@ const EditRecipeForm = (props) => {
     return (
         <div>
             <hr />
-            <h3>Edit the Recipe</h3>
+            <h3>Edit your Recipe</h3>
             <form onSubmit={handleFormSubmit}  className="container" >
+                <label htmlFor="rating">Rating:</label>
+                <input
+                type="number"
+                name="rating"
+                value={formState.rating}
+                onChange={handleInputChange}
+                />
                 <label htmlFor="title">Title:</label>
                 <input
                 type="text"
@@ -58,8 +67,9 @@ const EditRecipeForm = (props) => {
                     onChange={handleInputChange}
                 />
                 <label htmlFor="ingredients">Ingredients</label>
-                <input
-                    type="text"
+                <textarea
+                    rows="5"
+                    cols="30"
                     name="ingredients"
                     value={formState.ingredients}
                     onChange={handleInputChange}

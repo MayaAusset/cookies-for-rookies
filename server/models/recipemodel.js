@@ -2,6 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const recipeSchema = new Schema(
     {
+    rating: Number,
     image: String,
     title: String,
     duration: String,

@@ -15,11 +15,8 @@
   justify-content: center;
 }
 .recipe-card{
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  width:300px;
-  border: 1px solid black;
+  padding-top: 20px;
+  margin-top:10px;
 }
 .btn-grad {background-image: linear-gradient(to right, #DE6262 0%, #FFB88C  51%, #DE6262  100%)}
 .btn-grad {
@@ -55,3 +52,4 @@
   -webkit-filter: grayscale(100%) blur(3px);
 	filter: grayscale(100%);
 }
+

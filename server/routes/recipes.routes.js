@@ -8,10 +8,11 @@ const Recipe = require("../models/recipemodel");
 
 //! CREATE A RECIPE
 router.post("/recipe", (req, res) => {
-    const { image, title, duration, ingredients, description, fromUser } = req.body;
+    const { rating, image, title, duration, ingredients, description, fromUser } = req.body;
     console.log("body", req.body);
   
     Recipe.create({
+      rating,
       image,
       title,
       duration,

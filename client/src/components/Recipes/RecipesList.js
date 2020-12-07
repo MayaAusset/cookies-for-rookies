@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import '../Recipes/RecipesList.css';
 import axios from 'axios';
+import Rating from './Rating';
 //import AuthService from '../../services/auth.service';
 
 import AddRecipeForm from '../Forms/AddRecipeForm';
@@ -28,15 +29,18 @@ const RecipesList = () => {
         <div className="row main-recipelist">
                 {listOfRecipes.map((recipe) => {
                 return ( 
-                    <div key={recipe._id} className="col-4" > 
+                    <div key={recipe._id} className="col-4 recipe-card" > 
                         <Link to={`/recipes/${recipe._id}`}>
                         <div className="hover01">
                             <figure> <img src={recipe.image} className="card-img-top" alt="recipe's" width="200px"/></figure>
                         </div>
                         </Link>
-                        <Link to={`/recipes/${recipe._id}`}>
+                        <Rating>{recipe.rating}</Rating>
+                        <Link to={`/recipes/${recipe._id}`}> 
                             <h3 className="recipes-title">{recipe.title}</h3>
                         </Link>
+                        <hr/> 
+                        <img src="/stopwatch-logo.png" alt="ingrdients" width="20px"/>
                         <p>{recipe.duration} </p>
                     </div>
                 );
