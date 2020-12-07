@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../NavBar/Navbar.css';
+import RandomQuote from '../Recipes/RandomQuote';
+//import axios from 'axios';
 
 //import RecipesList from "../Recipes/RecipesList";
 
@@ -9,6 +11,8 @@ import AuthService from '../../services/auth.service';
 
 const Navbar = (props) => {
     const [loggedInUser, setLoggedInUser] = useState(null);
+
+
 
     const service = new AuthService();
 
@@ -35,6 +39,10 @@ const Navbar = (props) => {
             <h2 className="titleh2"><span>Welcome to Cookies for Rookies, {loggedInUser.username}</span></h2>
            
             <div className="redirection-container  align-items-center"> 
+
+            <RandomQuote/>
+
+           
 
                 <Link className="titleh2 col-6" to="/recipes" style={{ textDecoration: "none" }}>
                 Check out the Recipes !

@@ -6,6 +6,24 @@
     font-size: 3vw;
     margin-top: 40px;
 }
+.quote-span{
+    width: 30px;
+    margin: 20px;
+    font-size: 1.5rem;
+}
+blockquote{
+    margin: 30px;
+    padding: 20px;
+    background-color: #fcf2d6;
+}
+blockquote h1{
+    font-size: 3vw;
+    color: #f1d06c;
+}
+blockquote p{
+    font-size: 2vw;
+    margin: 20px;
+}
 .redirection-container{
 display: flex;
 flex-direction: column;
