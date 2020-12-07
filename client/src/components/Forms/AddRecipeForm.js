@@ -63,7 +63,8 @@ const AddRecipeForm = (props) => {
     };
 
     return (
-        <div  className="App add-recipe">
+        <div  className="add-recipe align-items-center">
+        <h1 className="text-justify-center form-title">Add a recipe !</h1>
             <form onSubmit={handleFormSubmit} className="container">
                 <label htmlFor="image">Image</label>
                 <input
@@ -104,15 +105,16 @@ const AddRecipeForm = (props) => {
 
 
                 {formState.image ? (
-                <button className="btn-grad" type="submit">Add new Recipe</button>
+                <button className="btn-add" type="submit">Add new Recipe</button>
                 ) : (
-                <button className="btn-grad" disabled type="submit">
+                <button className="btn-add" disabled type="submit">
                 To Add a new Recipe, choose an Image
                 </button>
                 )}
 
             </form>
         </div>
+        
 
     );
 };

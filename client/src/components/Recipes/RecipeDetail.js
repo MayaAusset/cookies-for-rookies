@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import '../Recipes/Recipes.css';
+import '../Recipes/RecipeDetail.css';
 import EditRecipeForm from '../Forms/EditRecipeForm';
 
 const RecipeDetail = (props) => {
@@ -55,7 +55,7 @@ const RecipeDetail = (props) => {
           return (
             <div>
               <div>{renderEditForm()} </div>
-              <button onClick={() => deleteRecipe(details._id)}>
+              <button className="btn btn-warning" onClick={() => deleteRecipe(details._id)}>
                 Delete this recipe
               </button>
             </div>
@@ -66,7 +66,7 @@ const RecipeDetail = (props) => {
     return (
         <div className="container">
             <div className="rec-detail-div">
-                <img src={details.image} alt="recipe" width="400px"/>
+                <img src={details.image} alt="recipe" width="600px"/>
                 <h3>{details.title}</h3>
                 <p>{details.duration} </p>
                 <p>{details.ingredients} </p>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 
+
 import RecipesList from '../Recipes/RecipesList';
 import RecipeDetail from '../Recipes/RecipeDetail';
 import Navbar from '../NavBar/Navbar';
@@ -11,6 +12,7 @@ import Signup from '../Auth/Signup';
 import Login from '../Auth/Login';
 
 import AuthService from '../../services/auth.service';
+import HomePage from '../NavBar/HomePage';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -42,6 +44,7 @@ function App() {
       <h1 className="big-title centered">COOKIES FOR ROOKIES</h1>
       </div>
       <Navbar userInSession={loggedInUser} getUser={getLoggedInUser} />
+        
         <Switch>
           <ProtectedRoute
             user={loggedInUser}
@@ -56,12 +59,14 @@ function App() {
         </Switch>
       </section>
     ) : (
-      <section className="App container-fluid">
+      <section className="App ">
       <div className="main-background">
       <img className="nav-img" src="/Background-img.jpg" alt="background" width="100%" />
-      <h1 className="centered">COOKIES FOR ROOKIES</h1>
+      <h1 className="big-title centered">COOKIES FOR ROOKIES</h1>
       </div>
+        <HomePage/>
         <Navbar userInSession={loggedInUser} getUser={getLoggedInUser} />
+        
 
         <Switch>
           <Route

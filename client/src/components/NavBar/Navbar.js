@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../Root/App.css';
-import RecipesList from "../Recipes/RecipesList";
+import '../NavBar/Navbar.css';
+
+//import RecipesList from "../Recipes/RecipesList";
 
 import AuthService from '../../services/auth.service';
 
@@ -30,21 +31,23 @@ const Navbar = (props) => {
 
     if (loggedInUser) {
     return (
-        <nav className="nav-style-loggedin">
-            <h2><span>Welcome, {loggedInUser.username}</span></h2>
-            <ul>
-            <li>
-      
-                <Link to="/recipes" style={{ textDecoration: "none" }}>
+        <nav className="nav-style-loggedin container-fluid">
+            <h2 className="titleh2"><span>Welcome to Cookies for Rookies, {loggedInUser.username}</span></h2>
+           
+            <div className="redirection-container  align-items-center"> 
+
+                <Link className="titleh2 col-6" to="/recipes" style={{ textDecoration: "none" }}>
                 Check out the Recipes !
                 </Link>
-            </li>
-            <li>
+            
                 <Link to="/">
-                <button onClick={logoutUser}>Logout</button>
+                <button className="btn-grad" onClick={logoutUser}>Logout</button>
                 </Link>
-            </li>
-            </ul>
+
+            </div>
+      
+              
+          
         </nav>
         );
     } else {

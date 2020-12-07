@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import '../Recipes/RecipesList.css';
 import axios from 'axios';
-import AuthService from '../../services/auth.service';
+//import AuthService from '../../services/auth.service';
 
 import AddRecipeForm from '../Forms/AddRecipeForm';
 
@@ -23,24 +24,31 @@ const RecipesList = () => {
     useEffect(getAllRecipes, []);
 
     return (
-        <div className="recipe-lis">
+        <div className="container">
+        <div className="row main-recipelist">
                 {listOfRecipes.map((recipe) => {
                 return ( 
-                    <div key={recipe._id} className="recipe-card" >
-                            <img src={recipe.image} className="card-img-top" alt="recipe's" width="200px"/>
-
-                            <Link to={`/recipes/${recipe._id}`}>
-                                <h3>{recipe.title}</h3>
-                            </Link>
-                            <p>{recipe.duration} </p>
-                            <p>{recipe.ingredients} </p>
-                            <p>{recipe.description} </p>
+                    <div key={recipe._id} className="col-4" > 
+                        <Link to={`/recipes/${recipe._id}`}>
+                        <div className="hover01">
+                            <figure> <img src={recipe.image} className="card-img-top" alt="recipe's" width="200px"/></figure>
+                        </div>
+                        </Link>
+                        <Link to={`/recipes/${recipe._id}`}>
+                            <h3 className="recipes-title">{recipe.title}</h3>
+                        </Link>
+                        <p>{recipe.duration} </p>
                     </div>
                 );
                 })}
-            <div className=" container-fluid">
+                </div>
+
+            <hr/>
+            <div className="container-fluid align-items-center">
                 <AddRecipeForm getData={getAllRecipes} />
             </div>
+
+           
         </div>
         
     )
