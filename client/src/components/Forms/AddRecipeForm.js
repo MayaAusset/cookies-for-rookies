@@ -115,9 +115,9 @@ const AddRecipeForm = (props) => {
 
 
                 {formState.image ? (
-                <button className="btn-add" type="submit">Add new Recipe</button>
+                <button className="add-btn" type="submit">Add new Recipe</button>
                 ) : (
-                <button className="btn-add" disabled type="submit">
+                <button className="add-btn" disabled type="submit">
                 To Add a new Recipe, choose an Image
                 </button>
                 )}

@@ -68,7 +68,7 @@ app.post('/api/forma', (req, res) => {
     //port: 465,
     auth:{
       user: 'mayafinalproject@gmail.com',
-      pass: '/Se6>,GhE)2drCCN',
+      pass: process.env.pass,
     }
   });
 
@@ -76,7 +76,7 @@ app.post('/api/forma', (req, res) => {
   let mailOptions = {
     from: 'mayafinalproject@gmail.com',
     to: data.email,
-    subject: `Message from ${data.name}`,
+    subject: `Message from Cookies For Rookies by ${data.name}`,
     html: `
 
     <h3>Here is a Recipe that you might like ! </h3>

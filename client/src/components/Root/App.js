@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 
 import RecipesList from '../Recipes/RecipesList';
@@ -38,7 +39,11 @@ function App() {
   fetchUser();
 
   return loggedInUser ? (
-      
+    <motion.div 
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      transition={{duration: 3}}
+      >
       <section className="App">
       <div className="main-background">
       <img className="nav-img" src="/Background-img.jpg" alt="background" width="100%" />
@@ -59,6 +64,8 @@ function App() {
           />
         </Switch>
       </section>
+      </motion.div>
+      
     ) : (
       <section className="App ">
       <div className="main-background">

@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   font-family: 'Chonburi', cursive;
+  margin-right: 0px;
 }
 p{
   font-family: 'Tenor Sans Chonburi', sans-serif;
@@ -39,6 +40,7 @@ li:hover{
   position: relative;
   text-align: center;
   color: white;
+  margin: 0px;
 }
 .centered {
   position: absolute;

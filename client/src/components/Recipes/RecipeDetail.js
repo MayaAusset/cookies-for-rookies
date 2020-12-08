@@ -9,6 +9,9 @@ import MailForm from '../../Nodemailer/MailForm';
 const RecipeDetail = (props) => {
     const [details, setDetails] = useState({});
 
+    const [currentRecipe, setCurrentRecipe] = useState('');
+
+
     const getSingleRecipe = () => {
         const { id } = props.match.params;
 
@@ -17,7 +20,8 @@ const RecipeDetail = (props) => {
                 withCredentials: true,
             })
             .then((responseFromApi) => {
-                console.log(responseFromApi);
+                console.log(responseFromApi.config.url);
+                setCurrentRecipe(responseFromApi.config.url);
                 setDetails(responseFromApi.data);
             })
             .catch((error) => console.error(error))
@@ -98,7 +102,7 @@ const RecipeDetail = (props) => {
                 </div>
 
                 <hr/>
-                <MailForm/>
+                <MailForm recipe={currentRecipe}/>
                 
             </div>
 
