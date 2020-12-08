@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import '../Recipes/RecipeDetail.css';
 import EditRecipeForm from '../Forms/EditRecipeForm';
 import Rating from './Rating';
+import MailForm from '../../Nodemailer/MailForm';
 
 const RecipeDetail = (props) => {
     const [details, setDetails] = useState({});
@@ -95,11 +96,15 @@ const RecipeDetail = (props) => {
                    
                    
                 </div>
+
+                <hr/>
+                <MailForm/>
                 
             </div>
 
                 
                 {ownershipCheck(details)}
+             
                 <br/>
                 <hr/>
             <Link to={"/recipes"}>

@@ -9,6 +9,10 @@ const logger       = require('morgan');
 const path         = require('path');
 const passport = require("passport");
 const session = require("express-session");
+const nodemailer = require("nodemailer");
+
+
+//require("./configs/nodemailer.configs");
 
 
 require("./configs/db.configs");
@@ -52,6 +56,55 @@ app.use(require('node-sass-middleware')({
   dest: path.join(__dirname, 'public'),
   sourceMap: true
 }));
+
+app.post('/api/forma', (req, res) => {
+
+  let data = req.body;
+
+  let smtpTransport = nodemailer.createTransport({
+    service: getMaxListeners,
+    port: 465,
+    auth:{
+      user: 'mayafinalproject@gmail.com',
+      pass: ' /Se6>,GhE)2drCCN',
+    }
+  });
+
+
+  let mailOptions = {
+    from: 'mayafinalproject@gmail.com',
+    to: data.email,
+    subject: `Message from ${data.name}`,
+    html: `
+
+    <h3>Here is a Recipe that you might like ! </h3>
+    <p>From ${data.name} ${data.lastname}</p>
+    <p> ${data.email}</p>
+
+    <h3>Message : </h3>
+    <p> ${data.message}</p>
+
+    `
+  };
+
+  smtpTransport.sendMail(mailOptions, (error, res) => {
+
+    if (error) {
+      res.send(error)
+    } else {
+      res.send(`Email sent with success !`)
+    }
+  })
+
+  smtpTransport.close()
+
+});
+
+const PORT =  3001;
+
+app.listen(PORT, () => {
+  console.log(`Server starting at port ${PORT}`)
+});
       
 
 app.set('views', path.join(__dirname, 'views'));
