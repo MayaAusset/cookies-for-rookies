@@ -12,7 +12,6 @@ const session = require("express-session");
 const nodemailer = require("nodemailer");
 
 
-//require("./configs/nodemailer.configs");
 
 
 require("./configs/db.configs");
@@ -57,16 +56,19 @@ app.use(require('node-sass-middleware')({
   sourceMap: true
 }));
 
+
+//! NODEMAILER CONFIGURATION
+
 app.post('/api/forma', (req, res) => {
 
   let data = req.body;
 
-  let smtpTransport = nodemailer.createTransport({
-    service: getMaxListeners,
-    port: 465,
+  let transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    //port: 465,
     auth:{
       user: 'mayafinalproject@gmail.com',
-      pass: ' /Se6>,GhE)2drCCN',
+      pass: '/Se6>,GhE)2drCCN',
     }
   });
 
@@ -78,8 +80,7 @@ app.post('/api/forma', (req, res) => {
     html: `
 
     <h3>Here is a Recipe that you might like ! </h3>
-    <p>From ${data.name} ${data.lastname}</p>
-    <p> ${data.email}</p>
+    
 
     <h3>Message : </h3>
     <p> ${data.message}</p>
@@ -87,7 +88,7 @@ app.post('/api/forma', (req, res) => {
     `
   };
 
-  smtpTransport.sendMail(mailOptions, (error, res) => {
+  transporter.sendMail(mailOptions, (error, info) => {
 
     if (error) {
       res.send(error)
@@ -96,15 +97,15 @@ app.post('/api/forma', (req, res) => {
     }
   })
 
-  smtpTransport.close()
+  transporter.close();
 
 });
 
-const PORT =  3001;
+//const PORT =  5001;
 
-app.listen(PORT, () => {
+/* app.listen(PORT, () => {
   console.log(`Server starting at port ${PORT}`)
-});
+}); */
       
 
 app.set('views', path.join(__dirname, 'views'));

@@ -6,7 +6,6 @@ export default class MailForm extends Component {
 
     state = {
         name: '',
-        lastname: '',
         email: '',
         message: '',
         sent: false
@@ -17,12 +16,6 @@ export default class MailForm extends Component {
             name: e.target.value 
         })
     };
-
-    handleLastName=(e)=>{
-        this.setState({
-            lastname: e.target.value 
-        })
-    }
 
     handleEmail=(e)=>{
         this.setState({
@@ -42,13 +35,12 @@ export default class MailForm extends Component {
 
         let data = {
             name: this.state.name,
-            lastname: this.state.lastname,
             email: this.state.email,
             message: this.state.message
         }
 
         axios
-            .post('/api/forma', data)
+            .post('http://localhost:5000/api/forma', data)
             .then((res) => {
                 this.setState({
                     sent: true,
@@ -62,7 +54,6 @@ export default class MailForm extends Component {
     resetForm = () => {
         this.setState({
             name: '',
-            lastname: '',
             email: '',
             message: ' '
         })
@@ -70,8 +61,8 @@ export default class MailForm extends Component {
         setTimeout(()=> {
             this.setState({
                 sent: false,
-            }, 3000)
-        })
+            })
+        }, 4000)
     }
 
 
@@ -98,18 +89,6 @@ export default class MailForm extends Component {
                             placeholder="your name here..."
                             value={this.state.name}
                             onChange={this.handleName}
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="lastname">Last Name</label>
-                            <input
-                            className="form-control"
-                            type="text"
-                            name="lastname"
-                            placeholder="your last name here..."
-                            value={this.state.lastname}
-                            onChange={this.handleLastName}
                             />
                         </div>
 
