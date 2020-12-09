@@ -17,4 +17,4 @@ mongoose
     console.error('Error connecting to mongo', err)
   });
 
-NODE_ENV === "development" ? connectDb(MONGO_LOCAL) || connectDb(MONGO_ATLAS)
+NODE_ENV === "development" ? connectDb(MONGO_LOCAL) : connectDb(MONGO_ATLAS)
