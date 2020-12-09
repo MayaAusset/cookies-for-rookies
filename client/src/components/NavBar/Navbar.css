@@ -1,0 +1,67 @@
+.nav-style-loggedin{
+    justify-content: center;
+    text-align: center;
+}
+.titleh2{
+    font-size: 3vw;
+    margin-top: 40px;
+    color: rgb(170, 169, 169);
+}
+.quote-span{
+    width: 30px;
+    margin: 20px;
+    font-size: 1.5rem;
+}
+blockquote{
+    margin: 30px;
+    padding: 20px;
+    background-color: #fcf2d6;
+}
+blockquote h1{
+    font-size: 3vw;
+    color: #f1d06c;
+}
+blockquote p{
+    font-size: 2vw;
+    margin: 20px;
+}
+.redirection-container{
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+li{
+    list-style-type: none;
+    justify-content: center;
+
+}
+li:hover{
+    list-style-type: none;
+}
+.intro{
+    padding: 50px;
+    font-size: 1.5vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-bottom: 5vw;
+    background-color: #FFC100;
+}
+.btn-grad {background-image: linear-gradient(to right, #F09819 0%, #EDDE5D  51%, #F09819  100%)}
+.btn-grad {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   
+ }
+
+ .btn-grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }

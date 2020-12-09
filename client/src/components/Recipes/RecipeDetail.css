@@ -1,0 +1,23 @@
+input{
+    border: 2px dotted blanchedalmond;   
+}
+textarea{
+    background-color: #fcdc7e;
+    border: 2px dotted blanchedalmond;   
+}
+.stars{
+    margin: 20px;
+    font-size: 3rem;
+}
+.instructions{
+    margin: 0px;
+}
+.stopwatch{
+    font-size: 2rem;
+    margin: 30px;
+    padding: 15px;
+    border: 1px dotted black;
+}
+.stopwatch img{
+    margin-right: 20px;
+}
