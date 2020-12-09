@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../Forms/EditRecipeForm.css';
 
+import RecipeService from "../../services/recipe.service";
+
 const EditRecipeForm = (props) => {
     const [formState, setFormState] = useState({
         rating: props.recipe.rating,
@@ -22,8 +24,10 @@ const EditRecipeForm = (props) => {
 
         const { rating, title, duration, ingredients, description } = formState;
 
-        axios
-            .put(`http://localhost:5000/api/recipes/${props.recipe._id}`, {
+        const service = new RecipeService();
+
+        service
+            .updateRecipe(props.recipe._id, {
                 rating,
                 title, 
                 duration, 

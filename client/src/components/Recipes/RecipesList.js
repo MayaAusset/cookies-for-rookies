@@ -5,6 +5,7 @@ import axios from 'axios';
 import Rating from './Rating';
 import { motion } from 'framer-motion';
 
+import RecipeService from '../../services/recipe.service';
 import AddRecipeForm from '../Forms/AddRecipeForm';
 
 const RecipesList = () => {
@@ -12,10 +13,12 @@ const RecipesList = () => {
     const [isToggled, setToggled] = useState(0);
 
     const getAllRecipes = () => {
-        axios
-            .get('http://localhost:5000/api/recipes', {
+        const service = new RecipeService();
+
+        service
+            .getRecipes()/* , {
                 withCredentials: true,
-            })
+            } */
             .then((responseFromApi) => {
                 console.log(responseFromApi.data);
                 setListOfRecipes(responseFromApi.data);

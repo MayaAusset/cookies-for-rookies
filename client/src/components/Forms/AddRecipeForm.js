@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import './AddRecipeForm.css';
 import UploadService from '../../services/upload.service';
+import RecipeService from "../../services/recipe.service";
+
 
 const initialState = {
     rating: 0,
@@ -43,20 +45,22 @@ const AddRecipeForm = (props) => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
+        const service = new RecipeService();
+
         const {  rating, image, title, duration, ingredients, description } = formState;
 
-        axios
-            .post("http://localhost:5000/api/recipe", { 
+        service
+            .createRecipe({ 
                 rating,
                 image,
                 title, 
                 duration, 
                 ingredients, 
                 description ,
-            },
+            }/* ,
             {
                 withCredentials: true,
-            })
+            } */)
             .then(() => {
                 props.getData();
                 setFormState(initialState);

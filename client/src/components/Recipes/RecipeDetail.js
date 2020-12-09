@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../Recipes/RecipeDetail.css';
+
 import EditRecipeForm from '../Forms/EditRecipeForm';
+import RecipeService from '../../services/recipe.service';
 import Rating from './Rating';
 import MailForm from '../../Nodemailer/MailForm';
 
@@ -15,10 +17,10 @@ const RecipeDetail = (props) => {
     const getSingleRecipe = () => {
         const { id } = props.match.params;
 
-        axios   
-            .get(`http://localhost:5000/api/recipes/${id}`, {
-                withCredentials: true,
-            })
+        const service = new RecipeService();
+
+        service   
+            .getOneRecipe(id)
             .then((responseFromApi) => {
                 console.log(responseFromApi.config.url);
                 setCurrentRecipe(responseFromApi.config.url);
@@ -46,10 +48,12 @@ const RecipeDetail = (props) => {
     const deleteRecipe = () => {
         const { id } = props.match.params;
 
-        axios
-            .delete(`http://localhost:5000/api/recipes/${id}`, {
+        const service = new RecipeService();
+
+        service
+            .removeRecipe(id)/*  {
                 withCredentials: true,
-            })
+            } */
             .then((results) => {
                 props.history.push('/recipes')
             })
