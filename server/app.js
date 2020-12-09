@@ -124,6 +124,11 @@ app.use("/api", require('./routes/recipes.routes'));
 app.use('/api', require('./routes/auth.routes'));
 app.use("/api", require("./routes/fileUpload.routes"));
 
-
+if (process.env.NODE_ENV === "production"){
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "../client", "build", "index.html"));
+  });
+}
 
 module.exports = app;
