@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const { MONGO_ATLAS, MONGO_LOCAL, NODE_ENV } = process.env;
+
 
 mongoose
   .connect('mongodb://localhost/cookies-for-rookies', {
