@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import '../Forms/EditRecipeForm.css';
 
 import RecipeService from "../../services/recipe.service";
 
@@ -33,10 +31,10 @@ const EditRecipeForm = (props) => {
                 duration, 
                 ingredients,
                 description,
-            }, 
+            }/* , 
             {
                 withCredentials: true,
-            })
+            } */)
             .then(() => {
                 props.getTheRecipe();
                 props.history.push("/recipes");

@@ -7,7 +7,7 @@ const Recipe = require("../models/recipemodel");
 
 
 //! CREATE A RECIPE
-router.post("/api/recipe", (req, res) => {
+router.post("/recipe", (req, res) => {
     const { rating, image, title, duration, ingredients, description, fromUser } = req.body;
     console.log("body", req.body);
   
@@ -30,7 +30,7 @@ router.post("/api/recipe", (req, res) => {
 
 
 //! DISPLAY ALL RECIPES
-router.get("/api/recipes", (req, res) => {
+router.get("/recipes", (req, res) => {
     Recipe.find()
       .populate("recipes")
       .then((allTheRecipes) => {
@@ -44,7 +44,7 @@ router.get("/api/recipes", (req, res) => {
 
   //! GET ONE SPECIFIC RECIPE TO DISPLAY
 
-  router.get("/api/recipes/:id", (req, res) => {
+  router.get("/recipes/:id", (req, res) => {
     const { id } = req.params;
   
     // Check if the incoming id is a valid ObjectId type
@@ -66,7 +66,7 @@ router.get("/api/recipes", (req, res) => {
   });
   
 // ! UPDATE A SPECIFIC RECIPE
-router.put("/api/recipes/:id", (req, res) => {
+router.put("/recipes/:id", (req, res) => {
     const { id } = req.params;
   
     // Check if the incoming id is a valid ObjectId type
@@ -87,7 +87,7 @@ router.put("/api/recipes/:id", (req, res) => {
   });
 
   //! DELETE A SPECIFIC RECIPE
-router.delete("/api/recipes/:id", (req, res) => {
+router.delete("/recipes/:id", (req, res) => {
     const { id } = req.params;
   
     // Check if the incoming id is a valid ObjectId type

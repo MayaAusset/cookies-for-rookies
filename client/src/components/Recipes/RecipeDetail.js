@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-//import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../Recipes/RecipeDetail.css';
 
@@ -12,7 +11,6 @@ const RecipeDetail = (props) => {
     const [details, setDetails] = useState({});
 
     const [currentRecipe, setCurrentRecipe] = useState('');
-
 
     const getSingleRecipe = () => {
         const { id } = props.match.params;
@@ -77,42 +75,32 @@ const RecipeDetail = (props) => {
         <div className="container">
             <div className="rec-detail-div">
                 <p className="stars">
-                <h1>{details.title}</h1>
-                <Rating>{details.rating}</Rating>
+                    <h1>{details.title}</h1>
+                    <Rating>{details.rating}</Rating>
                 </p>
                 <img src={details.image} alt="recipe" width="1000px"/>
-
-                
+       
                 <p className="stopwatch">
                 <img src="/stopwatch-logo.png" alt="ingrdients" width="50px"/>
                 {details.duration} </p>
                 
-             
-               
-
                 <div className="row instructions">
-                <div className="col-4 text-justify ">
-                    <img src="/Ingredients-logo.png" alt="ingrdients" width="50px"/>
-                    <h2>Ingredients: </h2>
-                    <p>{details.ingredients} </p>
-                </div>
-                <div className="col-8 text-justify ">
-                    <img src="/favicon.ico" alt="ingrdients" width="50px"/>
-                    <h2>Preparation: </h2>
-                    <p>{details.description} </p>
-                </div>
-                   
-                   
+                    <div className="col-4 text-justify ">
+                        <img src="/Ingredients-logo.png" alt="ingrdients" width="50px"/>
+                        <h2>Ingredients: </h2>
+                        <p>{details.ingredients} </p>
+                    </div>
+                    <div className="col-8 text-justify ">
+                        <img src="/favicon.ico" alt="ingrdients" width="50px"/>
+                        <h2>Preparation: </h2>
+                        <p>{details.description} </p>
+                    </div>  
                 </div>
 
                 <hr/>
                 <MailForm recipe={currentRecipe}/>
-                
             </div>
-
-                
                 {ownershipCheck(details)}
-             
                 <br/>
                 <hr/>
             <Link to={"/recipes"}>
