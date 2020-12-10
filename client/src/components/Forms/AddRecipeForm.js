@@ -24,16 +24,12 @@ const AddRecipeForm = (props) => {
     };
 
     const handleFileUpload = (event) => {
-        console.log("the file to be uploaded is : ", event.target.files[0]);
         const uploadData = new FormData();
         uploadData.append('image', event.target.files[0]);
 
-        // upload the data to cloudinary
         service
             .upload(uploadData)
             .then((response) => {
-                console.log('response is: ', response);
-                // The response from uploading to cloudinary is the url which will be saved in the database.
                 setFormState({ ...formState, image: response.cloudinaryUrl });
             })
             .catch((err) => {

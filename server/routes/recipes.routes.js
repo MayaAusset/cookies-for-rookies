@@ -3,10 +3,8 @@ const mongoose = require("mongoose");
 const router = Router();
 
 const Recipe = require("../models/recipemodel");
-//const User = require("../models/usermodel");
 
 
-//! CREATE A RECIPE
 router.post("/recipe", (req, res) => {
     const { rating, image, title, duration, ingredients, description, fromUser } = req.body;
     console.log("body", req.body);
@@ -18,7 +16,7 @@ router.post("/recipe", (req, res) => {
       duration,
       ingredients,
       description,
-      fromUser: req.user._id, // Add this after finishing authentication
+      fromUser: req.user._id, 
     })
       .then((response) => {
         res.status(200).json(response);
@@ -29,7 +27,6 @@ router.post("/recipe", (req, res) => {
   });
 
 
-//! DISPLAY ALL RECIPES
 router.get("/recipes", (req, res) => {
     Recipe.find()
       .populate("recipes")
@@ -40,9 +37,6 @@ router.get("/recipes", (req, res) => {
         res.status(500).json(err);
       });
   });
-
-
-  //! GET ONE SPECIFIC RECIPE TO DISPLAY
 
   router.get("/recipes/:id", (req, res) => {
     const { id } = req.params;
@@ -65,7 +59,6 @@ router.get("/recipes", (req, res) => {
       });
   });
   
-// ! UPDATE A SPECIFIC RECIPE
 router.put("/recipes/:id", (req, res) => {
     const { id } = req.params;
   
@@ -86,7 +79,6 @@ router.put("/recipes/:id", (req, res) => {
       });
   });
 
-  //! DELETE A SPECIFIC RECIPE
 router.delete("/recipes/:id", (req, res) => {
     const { id } = req.params;
   

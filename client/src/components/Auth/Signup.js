@@ -20,7 +20,6 @@ const Signup = (props) => {
         .signup(username, password, name)
         .then((response) => {
             setRegForm(initialState);
-            console.log("SIGNUP RESPPONSE",response)
             props.getUser(response);
         })
         .catch((error) => {

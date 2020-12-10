@@ -11,9 +11,6 @@ const passport = require("passport");
 const session = require("express-session");
 const nodemailer = require("nodemailer");
 
-
-
-
 require("./configs/db.configs");
 
 require('./configs/passport.configs');
@@ -65,7 +62,6 @@ app.post('/api/forma', (req, res) => {
 
   let transporter = nodemailer.createTransport({
     service: 'Gmail',
-    //port: 465,
     auth:{
       user: 'mayafinalproject@gmail.com',
       pass: process.env.pass,

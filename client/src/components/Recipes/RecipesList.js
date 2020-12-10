@@ -19,7 +19,6 @@ const RecipesList = () => {
                 withCredentials: true,
             } */
             .then((responseFromApi) => {
-                console.log(responseFromApi.data);
                 setListOfRecipes(responseFromApi.data);
             })
             .catch((error) => console.error(error));

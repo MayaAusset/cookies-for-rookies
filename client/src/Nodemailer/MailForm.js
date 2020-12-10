@@ -51,7 +51,7 @@ export default class MailForm extends Component {
                 }, this.resetForm())
             })
             .catch(() => {
-                console.log("message not sent")
+                console.log("log from MailForm.js, message not sent")
             })
     }
 

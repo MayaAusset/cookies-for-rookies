@@ -20,7 +20,6 @@ const RecipeDetail = (props) => {
         service   
             .getOneRecipe(id)
             .then((responseFromApi) => {
-                console.log(responseFromApi.config.url);
                 setCurrentRecipe(responseFromApi.config.url);
                 setDetails(responseFromApi.data);
             })
