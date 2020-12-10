@@ -101,11 +101,6 @@ app.post('/api/forma', (req, res) => {
 
 });
 
-//const PORT =  5001;
-
-/* app.listen(PORT, () => {
-  console.log(`Server starting at port ${PORT}`)
-}); */
       
 
 app.set('views', path.join(__dirname, 'views'));
