@@ -4,7 +4,7 @@ const { MONGO_ATLAS, MONGO_LOCAL, NODE_ENV } = process.env;
 
 const connectDb = (mongoUri) => {
   mongoose
-  .connect(`"${mongoUri}"`, {
+  .connect(mongoUri, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
