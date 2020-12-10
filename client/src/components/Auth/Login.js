@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import './Login.css';
 
 
 import AuthService from "../../services/auth.service";
@@ -13,7 +12,6 @@ const Login = (props) => {
 
   const service = new AuthService();
 
-  // Function to handle form submit in the input fields
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -32,7 +30,6 @@ const Login = (props) => {
       });
   };
 
-  // Function to handle changes in the input fields
   const handleChange = (event) => {
     const { name, value } = event.target;
     setLoginState({ ...loginState, [name]: value });

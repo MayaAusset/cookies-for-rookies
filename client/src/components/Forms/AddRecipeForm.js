@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import axios from 'axios';
 import './AddRecipeForm.css';
 import UploadService from '../../services/upload.service';
 import RecipeService from "../../services/recipe.service";

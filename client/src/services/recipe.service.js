@@ -11,7 +11,7 @@ class RecipeService {
   // Create a project
   createRecipe = (data) => {
     return this.service
-      .post("/api/recipes", data)
+      .post("/api/recipe", data)
       .then((response) => response);
   };
 
