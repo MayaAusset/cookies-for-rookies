@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './MailForm.css';
-import axios from "axios";
+import NodemailerService from '../services/nodemailer.service';
 
 export default class MailForm extends Component {
+
 
     state = {
         name: '',
@@ -33,14 +34,17 @@ export default class MailForm extends Component {
     formSubmit = (e) => {
         e.preventDefault();
 
+        const service = new NodemailerService();
+
+
         let data = {
             name: this.state.name,
             email: this.state.email,
             message: this.state.message
         }
 
-        axios
-            .post('http://localhost:5000/api/forma', data)
+        service
+            .sendMail(data)
             .then((res) => {
                 this.setState({
                     sent: true,
