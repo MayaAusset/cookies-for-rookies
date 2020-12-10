@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const { MONGO_ATLAS, MONGO_LOCAL, NODE_ENV } = process.env;
 
-const connectDb = (mongoUri) =>
-mongoose
-  .connect(mongoUri, {
+const connectDb = (mongoUri) => {
+  mongoose
+  .connect(`"${mongoUri}"`, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -16,5 +16,6 @@ mongoose
   .catch(err => {
     console.error('Error connecting to mongo', err)
   });
+}
 
 NODE_ENV === "development" ? connectDb(MONGO_LOCAL) : connectDb(MONGO_ATLAS)
