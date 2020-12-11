@@ -8,9 +8,6 @@ import Rating from './Rating';
 import MailForm from '../../Nodemailer/MailForm';
 
 const RecipeDetail = (props) => {
-    const [isToggled, setToggled] = useState(0);
-
-
     const [details, setDetails] = useState({});
 
     const [currentRecipe, setCurrentRecipe] = useState('');
@@ -23,7 +20,6 @@ const RecipeDetail = (props) => {
         service   
             .getOneRecipe(id)
             .then((responseFromApi) => {
-                console.log(responseFromApi.config.url)
                 setCurrentRecipe(responseFromApi.config.url);
                 setDetails(responseFromApi.data);
             })
@@ -65,20 +61,7 @@ const RecipeDetail = (props) => {
         if (props.loggedInUser && recipe.fromUser === props.loggedInUser._id) {
           return (
             <div>
-              
-
-            <button
-            className="btn-grad"
-            onClick={() => setToggled((prevValue) => { return prevValue ? 0 : 1 })}>
-                Edit your Recipe
-            </button>
-            <motion.div 
-            animate={{opacity: isToggled}}
-            >
-            <div>{renderEditForm()}</div>
-            </motion.div>
-
-
+              <div>{renderEditForm()} </div>
               <button className="btn btn-warning" onClick={() => deleteRecipe(details._id)}>
                 Delete this recipe
               </button>
@@ -115,8 +98,11 @@ const RecipeDetail = (props) => {
 
                 <hr/>
                 <MailForm recipe={currentRecipe}/>
+
             </div>
+
                 {ownershipCheck(details)}
+
                 <br/>
                 <hr/>
             <Link to={"/recipes"}>
