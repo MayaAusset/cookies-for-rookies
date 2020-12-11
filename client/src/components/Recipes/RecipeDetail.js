@@ -95,7 +95,7 @@ const RecipeDetail = (props) => {
                 </div>
 
                 <hr/>
-                <MailForm recipe={details}/>
+                <MailForm/>
 
             </div>
 

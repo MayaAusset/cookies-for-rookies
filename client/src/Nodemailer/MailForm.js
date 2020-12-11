@@ -8,7 +8,7 @@ export default class MailForm extends Component {
     state = {
         name: '',
         email: '',
-        message: `Check out this recipe :${this.details.title}`,
+        message: `Hey ! I thought you might like to check out the Cookies for Rookies Website ! `,
         sent: false
     }
 
@@ -59,7 +59,7 @@ export default class MailForm extends Component {
         this.setState({
             name: '',
             email: '',
-            message: `Check out this recipe ! ${this.details.title}`,
+            message: `Hey ! I thought you might like to check out the Cookies for Rookies Website ! `,
         })
 
         setTimeout(()=> {
