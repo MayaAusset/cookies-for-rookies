@@ -33,7 +33,7 @@ const RecipesList = () => {
                 return ( 
                     <div key={recipe._id} className="col-4 recipe-card" > 
                         <motion.div 
-                            initial={{ x: 100 }}
+                            initial={{ x: 200 }}
                             animate={{x:0}}
                             transition={{duration:1.5}}
                         >
