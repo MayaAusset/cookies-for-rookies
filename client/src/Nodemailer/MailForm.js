@@ -59,7 +59,7 @@ export default class MailForm extends Component {
         this.setState({
             name: '',
             email: '',
-            message: `Check out this recipe ! ${this.recipe}`,
+            message: `Check out this recipe ! ${this.props.recipe}`,
         })
 
         setTimeout(()=> {
