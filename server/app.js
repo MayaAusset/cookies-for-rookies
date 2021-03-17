@@ -3,7 +3,6 @@ require('dotenv').config();
 const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express      = require('express');
-const favicon      = require('serve-favicon');
 const cors = require("cors");
 const logger       = require('morgan');
 const path         = require('path');
@@ -87,9 +86,9 @@ app.post('/api/forma', (req, res) => {
   transporter.sendMail(mailOptions, (error, info) => {
 
     if (error) {
-      res.send(error)
+      res.send(`email not sent : ${error}`)
     } else {
-      res.send(`Email sent with success !`)
+      res.send(`Email sent with success ! : ${info}`)
     }
   })
 
@@ -102,7 +101,6 @@ app.post('/api/forma', (req, res) => {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 
